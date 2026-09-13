@@ -1,1 +1,543 @@
-PLACEHOLDER
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Нейро-чат — Умный AI-помощник</title>
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCI+CiAgPHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiMwMDAiLz4KICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMy41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgPCEtLSBjaGF0IGJ1YmJsZSAtLT4KICAgIDxwYXRoIGQ9Ik0yOCAzMiBoMzIgYTEyIDEyIDAgMCAxIDEyIDEyIHYxNiBhMTIgMTIgMCAwIDEgLTEyIDEyIGgtOCBsLTEwIDEwIHYtMTAgaC0xNCBhMTIgMTIgMCAwIDEgLTEyIC0xMiB2LTE2IGExMiAxMiAwIDAgMSAxMiAtMTIgeiIvPgogICAgPCEtLSBkb3RzIGluc2lkZSAtLT4KICAgIDxjaXJjbGUgY3g9IjM4IiBjeT0iNTIiIHI9IjIuNSIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSJub25lIi8+CiAgICA8Y2lyY2xlIGN4PSI0OCIgY3k9IjUyIiByPSIyLjUiIGZpbGw9IiNmZmYiIHN0cm9rZT0ibm9uZSIvPgogICAgPGNpcmNsZSBjeD0iNTgiIGN5PSI1MiIgcj0iMi41IiBmaWxsPSIjZmZmIiBzdHJva2U9Im5vbmUiLz4KICAgIDwhLS0gY2lyY3VpdCBsaW5lcyByaWdodCAtLT4KICAgIDxwYXRoIGQ9Ik03MiAzOCBoMTAiLz4KICAgIDxjaXJjbGUgY3g9Ijg1IiBjeT0iMzgiIHI9IjMuNSIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSJub25lIi8+CiAgICA8cGF0aCBkPSJNNzIgNDggaDE0Ii8+CiAgICA8Y2lyY2xlIGN4PSI4OSIgY3k9IjQ4IiByPSIzLjUiIGZpbGw9IiNmZmYiIHN0cm9rZT0ibm9uZSIvPgogICAgPHBhdGggZD0iTTcyIDU4IGgxMCIvPgogICAgPGNpcmNsZSBjeD0iODUiIGN5PSI1OCIgcj0iMy41IiBmaWxsPSIjZmZmIiBzdHJva2U9Im5vbmUiLz4KICAgIDxwYXRoIGQ9Ik03MiA2OCBoOCIvPgogICAgPGNpcmNsZSBjeD0iODMiIGN5PSI2OCIgcj0iMy41IiBmaWxsPSIjZmZmIiBzdHJva2U9Im5vbmUiLz4KICAgIDwhLS0gYXJjIGxlZnQgLS0+CiAgICA8cGF0aCBkPSJNMjIgMjggYTI4IDI4IDAgMCAxIDI4IC0xOCIgc3Ryb2tlLXdpZHRoPSIyLjUiLz4KICAgIDxjaXJjbGUgY3g9IjE4IiBjeT0iMzIiIHI9IjIuNSIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSJub25lIi8+CiAgICA8Y2lyY2xlIGN4PSIxNCIgY3k9IjQyIiByPSIyIiBmaWxsPSIjZmZmIiBzdHJva2U9Im5vbmUiLz4KICAgIDxwYXRoIGQ9Ik0xMiA0OCBhNCA0IDAgMCAwIDAgOCIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPC9nPgo8L3N2Zz4=">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#212121;--sidebar:#171717;--chat-bg:#212121;--msg-user:#2f2f2f;--msg-ai:#212121;
+--text:#ececec;--text-sec:#b4b4b4;--border:#424242;--accent:#10a37f;--hover:#2a2a2a;
+--input-bg:#2f2f2f;--btn:#10a37f;--danger:#ef4444;
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);height:100vh;overflow:hidden}
+.hidden{display:none!important}
+
+#login-screen{display:flex;align-items:center;justify-content:center;height:100vh;background:linear-gradient(135deg,#0d0d0d,#1a1a1a)}
+.login-box{background:#1e1e1e;border:1px solid var(--border);border-radius:16px;padding:40px;width:100%;max-width:400px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.login-logo{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:28px}
+.login-logo img{width:52px;height:52px;border-radius:12px}
+.login-logo h1{font-size:28px;font-weight:700;background:linear-gradient(90deg,#10a37f,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.login-box input{width:100%;padding:14px 16px;margin-bottom:14px;background:var(--input-bg);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:15px;outline:none;transition:.2s}
+.login-box input:focus{border-color:var(--accent)}
+.login-box button{width:100%;padding:14px;background:var(--btn);border:none;border-radius:10px;color:#fff;font-size:16px;font-weight:600;cursor:pointer;transition:.2s}
+.login-box button:hover{background:#0d8c6d}
+.login-toggle{text-align:center;margin-top:18px;color:var(--text-sec);font-size:14px}
+.login-toggle span{color:var(--accent);cursor:pointer;font-weight:600}
+.login-error{color:var(--danger);font-size:13px;margin-bottom:10px;text-align:center;display:none}
+
+#app{display:flex;height:100vh}
+.sidebar{width:260px;background:var(--sidebar);display:flex;flex-direction:column;border-right:1px solid var(--border);transition:transform .3s}
+.sidebar-header{padding:14px;display:flex;align-items:center;gap:10px}
+.sidebar-header img{width:36px;height:36px;border-radius:8px}
+.sidebar-header .name{font-size:16px;font-weight:600}
+.new-chat-btn{margin:0 12px 12px;padding:11px 14px;background:transparent;border:1px solid var(--border);border-radius:10px;color:var(--text);cursor:pointer;display:flex;align-items:center;gap:8px;font-size:14px;transition:.2s}
+.new-chat-btn:hover{background:var(--hover)}
+.chat-list{flex:1;overflow-y:auto;padding:0 8px}
+.chat-item{padding:11px 12px;border-radius:8px;cursor:pointer;font-size:14px;color:var(--text-sec);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px;display:flex;align-items:center;gap:8px}
+.chat-item:hover,.chat-item.active{background:var(--hover);color:var(--text)}
+.sidebar-footer{padding:12px;border-top:1px solid var(--border)}
+.user-info{display:flex;align-items:center;gap:10px;padding:8px;border-radius:8px;cursor:pointer}
+.user-info:hover{background:var(--hover)}
+.user-avatar{width:32px;height:32px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+.support-block{padding:12px;font-size:12px;color:var(--text-sec);line-height:1.5;border-top:1px solid var(--border)}
+.support-block a{color:var(--accent);text-decoration:none}
+.support-block a:hover{text-decoration:underline}
+
+.main{flex:1;display:flex;flex-direction:column;position:relative}
+.topbar{height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid var(--border);background:var(--bg)}
+.topbar-title{font-size:15px;font-weight:500;color:var(--text-sec)}
+.model-select{background:var(--input-bg);border:1px solid var(--border);color:var(--text);padding:6px 12px;border-radius:8px;font-size:13px;outline:none;cursor:pointer}
+.tools-bar{display:flex;gap:8px;padding:10px 16px;border-bottom:1px solid var(--border);flex-wrap:wrap;background:#1a1a1a}
+.tool-btn{padding:7px 14px;background:var(--input-bg);border:1px solid var(--border);border-radius:20px;color:var(--text-sec);font-size:13px;cursor:pointer;display:flex;align-items:center;gap:6px;transition:.2s}
+.tool-btn:hover,.tool-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+.chat-area{flex:1;overflow-y:auto;padding:20px 0;scroll-behavior:smooth}
+.messages{max-width:768px;margin:0 auto;padding:0 16px}
+.message{display:flex;gap:14px;padding:18px 0}
+.message .avatar{width:32px;height:32px;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700}
+.message.user .avatar{background:#5436da}
+.message.ai .avatar{background:var(--accent)}
+.message .content{flex:1;font-size:15.5px;line-height:1.7;color:var(--text)}
+.message .content pre{background:#1e1e1e;padding:12px;border-radius:8px;overflow-x:auto;margin:10px 0;font-size:13px}
+.message .content code{font-family:"SF Mono",Monaco,Consolas,monospace}
+.message .content img{max-width:100%;border-radius:10px;margin:10px 0}
+.welcome{text-align:center;padding:60px 20px;max-width:600px;margin:0 auto}
+.welcome img{width:72px;height:72px;border-radius:16px;margin-bottom:20px}
+.welcome h2{font-size:28px;margin-bottom:10px;font-weight:600}
+.welcome p{color:var(--text-sec);font-size:15px;margin-bottom:30px}
+.suggestions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sug{padding:14px;background:var(--input-bg);border:1px solid var(--border);border-radius:12px;cursor:pointer;text-align:left;font-size:13px;color:var(--text-sec);transition:.2s}
+.sug:hover{background:var(--hover);border-color:var(--accent)}
+
+.input-area{padding:16px;background:var(--bg);border-top:1px solid var(--border)}
+.input-wrap{max-width:768px;margin:0 auto;position:relative}
+.input-box{display:flex;align-items:flex-end;background:var(--input-bg);border:1px solid var(--border);border-radius:16px;padding:10px 12px;gap:8px}
+.input-box textarea{flex:1;background:transparent;border:none;outline:none;color:var(--text);font-size:15px;resize:none;max-height:200px;line-height:1.5;font-family:inherit}
+.send-btn{width:36px;height:36px;border-radius:10px;background:var(--accent);border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.2s}
+.send-btn:hover{background:#0d8c6d}
+.send-btn:disabled{opacity:.4;cursor:not-allowed}
+.input-hint{text-align:center;font-size:12px;color:var(--text-sec);margin-top:8px}
+
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:1000}
+.modal{background:#1e1e1e;border:1px solid var(--border);border-radius:16px;padding:28px;width:90%;max-width:480px;max-height:90vh;overflow-y:auto}
+.modal h3{font-size:20px;margin-bottom:16px}
+.modal label{display:block;font-size:13px;color:var(--text-sec);margin-bottom:6px}
+.modal input,.modal textarea,.modal select{width:100%;padding:11px 14px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:14px;margin-bottom:14px;outline:none}
+.modal textarea{min-height:90px;resize:vertical}
+.modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:8px}
+.modal-actions button{padding:10px 18px;border-radius:8px;border:none;font-size:14px;cursor:pointer;font-weight:500}
+.btn-cancel{background:var(--input-bg);color:var(--text)}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#0d8c6d}
+
+.result-card{background:#1a1a1a;border:1px solid var(--border);border-radius:12px;padding:16px;margin:12px 0}
+.result-card h4{margin-bottom:8px;font-size:15px}
+.result-card .download{display:inline-block;margin-top:10px;padding:8px 14px;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-size:13px}
+
+.menu-btn{display:none;background:none;border:none;color:var(--text);font-size:22px;cursor:pointer}
+@media(max-width:768px){
+.sidebar{position:fixed;left:0;top:0;bottom:0;z-index:100;transform:translateX(-100%)}
+.sidebar.open{transform:translateX(0)}
+.menu-btn{display:block}
+.suggestions{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCI+CiAgPHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiMwMDAiLz4KICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMy41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgPCEtLSBjaGF0IGJ1YmJsZSAtLT4KICAgIDxwYXRoIGQ9Ik0yOCAzMiBoMzIgYTEyIDEyIDAgMCAxIDEyIDEyIHYxNiBhMTIgMTIgMCAwIDEgLTEyIDEyIGgtOCBsLTEwIDEwIHYtMTAgaC0xNCBhMTIgMTIgMCAwIDEgLTEyIC0xMiB2LTE2IGExMiAxMiAwIDAgMSAxMiAtMTIgeiIvPgogICAgPCEtLSBkb3RzIGluc2lkZSAtLT4KICAgIDxjaXJjbGUgY3g9IjM4IiBjeT0iNTIiIHI9IjIuNSIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSJub25lIi8+CiAgICA8Y2lyY2xlIGN4PSI0OCIgY3k9IjUyIiByPSIyLjUiIGZpbGw9IiNmZmYiIHN0cm9rZT0ibm9uZSIvPgogICAgPGNpcmNsZSBjeD0iNTgiIGN5PSI1MiIgcj0iMi41IiBmaWxsPSIjZmZmIiBzdHJva2U9Im5vbmUiLz4KICAgIDwhLS0gY2lyY3VpdCBsaW5lcyByaWdodCAtLT4KICAgIDxwYXRoIGQ9Ik03MiAzOCBoMTAiLz4KICAgIDxjaXJjbGUgY3g9Ijg1IiBjeT0iMzgiIHI9IjMuNSIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSJub25lIi8+CiAgICA8cGF0aCBkPSJNNzIgNDggaDE0Ii8+CiAgICA8Y2lyY2xlIGN4PSI4OSIgY3k9IjQ4IiByPSIzLjUiIGZpbGw9IiNmZmYiIHN0cm9rZT0ibm9uZSIvPgogICAgPHBhdGggZD0iTTcyIDU4IGgxMCIvPgogICAgPGNpcmNsZSBjeD0iODUiIGN5PSI1OCIgcj0iMy41IiBmaWxsPSIjZmZmIiBzdHJva2U9Im5vbmUiLz4KICAgIDxwYXRoIGQ9Ik03MiA2OCBoOCIvPgogICAgPGNpcmNsZSBjeD0iODMiIGN5PSI2OCIgcj0iMy41IiBmaWxsPSIjZmZmIiBzdHJva2U9Im5vbmUiLz4KICAgIDwhLS0gYXJjIGxlZnQgLS0+CiAgICA8cGF0aCBkPSJNMjIgMjggYTI4IDI4IDAgMCAxIDI4IC0xOCIgc3Ryb2tlLXdpZHRoPSIyLjUiLz4KICAgIDxjaXJjbGUgY3g9IjE4IiBjeT0iMzIiIHI9IjIuNSIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSJub25lIi8+CiAgICA8Y2lyY2xlIGN4PSIxNCIgY3k9IjQyIiByPSIyIiBmaWxsPSIjZmZmIiBzdHJva2U9Im5vbmUiLz4KICAgIDxwYXRoIGQ9Ik0xMiA0OCBhNCA0IDAgMCAwIDAgOCIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPC9nPgo8L3N2Zz4=" alt="Нейро-чат">
+      <h1>Нейро-чат</h1>
+    </div>
+    <div class="login-error" id="login-error"></div>
+    <input type="text" id="username" placeholder="Имя пользователя" autocomplete="username">
+    <input type="password" id="password" placeholder="Пароль" autocomplete="current-password">
+    <button id="auth-btn" onclick="handleAuth()">Войти</button>
+    <div class="login-toggle">
+      <span id="toggle-mode" onclick="toggleAuthMode()">Нет аккаунта? Зарегистрироваться</span>
+    </div>
+  </div>
+</div>
+
+<div id="app" class="hidden">
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCI+CiAgPHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiMwMDAiLz4KICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMy41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgPCEtLSBjaGF0IGJ1YmJsZSAtLT4KICAgIDxwYXRoIGQ9Ik0yOCAzMiBoMzIgYTEyIDEyIDAgMCAxIDEyIDEyIHYxNiBhMTIgMTIgMCAwIDEgLTEyIDEyIGgtOCBsLTEwIDEwIHYtMTAgaC0xNCBhMTIgMTIgMCAwIDEgLTEyIC0xMiB2LTE2IGExMiAxMiAwIDAgMSAxMiAtMTIgeiIvPgogICAgPCEtLSBkb3RzIGluc2lkZSAtLT4KICAgIDxjaXJjbGUgY3g9IjM4IiBjeT0iNTIiIHI9IjIuNSIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSJub25lIi8+CiAgICA8Y2lyY2xlIGN4PSI0OCIgY3k9IjUyIiByPSIyLjUiIGZpbGw9IiNmZmYiIHN0cm9rZT0ibm9uZSIvPgogICAgPGNpcmNsZSBjeD0iNTgiIGN5PSI1MiIgcj0iMi41IiBmaWxsPSIjZmZmIiBzdHJva2U9Im5vbmUiLz4KICAgIDwhLS0gY2lyY3VpdCBsaW5lcyByaWdodCAtLT4KICAgIDxwYXRoIGQ9Ik03MiAzOCBoMTAiLz4KICAgIDxjaXJjbGUgY3g9Ijg1IiBjeT0iMzgiIHI9IjMuNSIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSJub25lIi8+CiAgICA8cGF0aCBkPSJNNzIgNDggaDE0Ii8+CiAgICA8Y2lyY2xlIGN4PSI4OSIgY3k9IjQ4IiByPSIzLjUiIGZpbGw9IiNmZmYiIHN0cm9rZT0ibm9uZSIvPgogICAgPHBhdGggZD0iTTcyIDU4IGgxMCIvPgogICAgPGNpcmNsZSBjeD0iODUiIGN5PSI1OCIgcj0iMy41IiBmaWxsPSIjZmZmIiBzdHJva2U9Im5vbmUiLz4KICAgIDxwYXRoIGQ9Ik03MiA2OCBoOCIvPgogICAgPGNpcmNsZSBjeD0iODMiIGN5PSI2OCIgcj0iMy41IiBmaWxsPSIjZmZmIiBzdHJva2U9Im5vbmUiLz4KICAgIDwhLS0gYXJjIGxlZnQgLS0+CiAgICA8cGF0aCBkPSJNMjIgMjggYTI4IDI4IDAgMCAxIDI4IC0xOCIgc3Ryb2tlLXdpZHRoPSIyLjUiLz4KICAgIDxjaXJjbGUgY3g9IjE4IiBjeT0iMzIiIHI9IjIuNSIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSJub25lIi8+CiAgICA8Y2lyY2xlIGN4PSIxNCIgY3k9IjQyIiByPSIyIiBmaWxsPSIjZmZmIiBzdHJva2U9Im5vbmUiLz4KICAgIDxwYXRoIGQ9Ik0xMiA0OCBhNCA0IDAgMCAwIDAgOCIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPC9nPgo8L3N2Zz4=" alt="logo">
+      <span class="name">Нейро-чат</span>
+    </div>
+    <button class="new-chat-btn" onclick="newChat()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+      Новый чат
+    </button>
+    <div class="chat-list" id="chat-list"></div>
+    <div class="support-block">
+      <div style="margin-bottom:6px;font-weight:600;color:var(--text)">Поддержка</div>
+      <div>📞 <a href="tel:+79002373222">+7 (900) 237-32-22</a></div>
+      <div>✉️ <a href="mailto:superyaroslav8@iCloud.com">superyaroslav8@iCloud.com</a></div>
+      <div style="margin-top:8px;opacity:.7">Полностью бесплатно</div>
+    </div>
+    <div class="sidebar-footer">
+      <div class="user-info" onclick="logout()">
+        <div class="user-avatar" id="user-avatar">U</div>
+        <div>
+          <div id="user-name" style="font-size:14px;font-weight:500">User</div>
+          <div style="font-size:12px;color:var(--text-sec)">Выйти</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="topbar">
+      <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+      <div class="topbar-title">Нейро-чат · Самый умный помощник</div>
+      <select class="model-select" id="model-select">
+        <option value="neuro-pro">Нейро-Pro</option>
+        <option value="neuro-fast">Нейро-Fast</option>
+        <option value="neuro-creative">Нейро-Creative</option>
+      </select>
+    </div>
+
+    <div class="tools-bar">
+      <button class="tool-btn" onclick="openTool('photo')">🖼 Создать фото</button>
+      <button class="tool-btn" onclick="openTool('video')">🎬 Создать видео</button>
+      <button class="tool-btn" onclick="openTool('music')">🎵 Создать музыку</button>
+      <button class="tool-btn" onclick="openTool('3d')">🖨 3D-модель</button>
+    </div>
+
+    <div class="chat-area" id="chat-area">
+      <div class="welcome" id="welcome">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCI+CiAgPHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiMwMDAiLz4KICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMy41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgPCEtLSBjaGF0IGJ1YmJsZSAtLT4KICAgIDxwYXRoIGQ9Ik0yOCAzMiBoMzIgYTEyIDEyIDAgMCAxIDEyIDEyIHYxNiBhMTIgMTIgMCAwIDEgLTEyIDEyIGgtOCBsLTEwIDEwIHYtMTAgaC0xNCBhMTIgMTIgMCAwIDEgLTEyIC0xMiB2LTE2IGExMiAxMiAwIDAgMSAxMiAtMTIgeiIvPgogICAgPCEtLSBkb3RzIGluc2lkZSAtLT4KICAgIDxjaXJjbGUgY3g9IjM4IiBjeT0iNTIiIHI9IjIuNSIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSJub25lIi8+CiAgICA8Y2lyY2xlIGN4PSI0OCIgY3k9IjUyIiByPSIyLjUiIGZpbGw9IiNmZmYiIHN0cm9rZT0ibm9uZSIvPgogICAgPGNpcmNsZSBjeD0iNTgiIGN5PSI1MiIgcj0iMi41IiBmaWxsPSIjZmZmIiBzdHJva2U9Im5vbmUiLz4KICAgIDwhLS0gY2lyY3VpdCBsaW5lcyByaWdodCAtLT4KICAgIDxwYXRoIGQ9Ik03MiAzOCBoMTAiLz4KICAgIDxjaXJjbGUgY3g9Ijg1IiBjeT0iMzgiIHI9IjMuNSIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSJub25lIi8+CiAgICA8cGF0aCBkPSJNNzIgNDggaDE0Ii8+CiAgICA8Y2lyY2xlIGN4PSI4OSIgY3k9IjQ4IiByPSIzLjUiIGZpbGw9IiNmZmYiIHN0cm9rZT0ibm9uZSIvPgogICAgPHBhdGggZD0iTTcyIDU4IGgxMCIvPgogICAgPGNpcmNsZSBjeD0iODUiIGN5PSI1OCIgcj0iMy41IiBmaWxsPSIjZmZmIiBzdHJva2U9Im5vbmUiLz4KICAgIDxwYXRoIGQ9Ik03MiA2OCBoOCIvPgogICAgPGNpcmNsZSBjeD0iODMiIGN5PSI2OCIgcj0iMy41IiBmaWxsPSIjZmZmIiBzdHJva2U9Im5vbmUiLz4KICAgIDwhLS0gYXJjIGxlZnQgLS0+CiAgICA8cGF0aCBkPSJNMjIgMjggYTI4IDI4IDAgMCAxIDI4IC0xOCIgc3Ryb2tlLXdpZHRoPSIyLjUiLz4KICAgIDxjaXJjbGUgY3g9IjE4IiBjeT0iMzIiIHI9IjIuNSIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSJub25lIi8+CiAgICA8Y2lyY2xlIGN4PSIxNCIgY3k9IjQyIiByPSIyIiBmaWxsPSIjZmZmIiBzdHJva2U9Im5vbmUiLz4KICAgIDxwYXRoIGQ9Ik0xMiA0OCBhNCA0IDAgMCAwIDAgOCIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPC9nPgo8L3N2Zz4=" alt="logo">
+        <h2>Чем я могу помочь?</h2>
+        <p>Я — Нейро-чат. Полностью бесплатный AI-помощник с функциями ChatGPT + создание видео, музыки, фото и 3D-моделей.</p>
+        <div class="suggestions">
+          <div class="sug" onclick="sendSuggestion('Напиши код простого Todo-приложения на React')">Напиши код Todo-приложения на React</div>
+          <div class="sug" onclick="sendSuggestion('Придумай идею стартапа в сфере AI')">Придумай идею стартапа в сфере AI</div>
+          <div class="sug" onclick="sendSuggestion('Объясни квантовые вычисления простыми словами')">Объясни квантовые вычисления</div>
+          <div class="sug" onclick="sendSuggestion('Составь план изучения JavaScript за 30 дней')">План изучения JS за 30 дней</div>
+        </div>
+      </div>
+      <div class="messages" id="messages"></div>
+    </div>
+
+    <div class="input-area">
+      <div class="input-wrap">
+        <div class="input-box">
+          <textarea id="user-input" rows="1" placeholder="Напишите сообщение..." onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+          <button class="send-btn" id="send-btn" onclick="sendMessage()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+          </button>
+        </div>
+        <div class="input-hint">Нейро-чат может ошибаться. Проверяйте важную информацию. Полностью бесплатно.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="modal-overlay" class="modal-overlay hidden" onclick="closeModal(event)">
+  <div class="modal" id="tool-modal" onclick="event.stopPropagation()">
+    <h3 id="modal-title">Создать</h3>
+    <div id="modal-body"></div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal()">Отмена</button>
+      <button class="btn-primary" id="modal-submit" onclick="submitTool()">Создать</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let currentUser = null;
+let isRegister = false;
+let chats = [];
+let currentChatId = null;
+let currentTool = null;
+
+function toggleAuthMode() {
+  isRegister = !isRegister;
+  document.getElementById('auth-btn').textContent = isRegister ? 'Зарегистрироваться' : 'Войти';
+  document.getElementById('toggle-mode').textContent = isRegister ? 'Уже есть аккаунт? Войти' : 'Нет аккаунта? Зарегистрироваться';
+  document.getElementById('login-error').style.display = 'none';
+}
+
+function handleAuth() {
+  const username = document.getElementById('username').value.trim();
+  const password = document.getElementById('password').value;
+  const err = document.getElementById('login-error');
+  if (!username || !password) {
+    err.textContent = 'Введите имя пользователя и пароль';
+    err.style.display = 'block';
+    return;
+  }
+  let users = JSON.parse(localStorage.getItem('neuro_users') || '{}');
+  if (isRegister) {
+    if (users[username]) {
+      err.textContent = 'Пользователь уже существует';
+      err.style.display = 'block';
+      return;
+    }
+    users[username] = { password, created: Date.now() };
+    localStorage.setItem('neuro_users', JSON.stringify(users));
+  } else {
+    if (!users[username] || users[username].password !== password) {
+      err.textContent = 'Неверное имя пользователя или пароль';
+      err.style.display = 'block';
+      return;
+    }
+  }
+  currentUser = username;
+  localStorage.setItem('neuro_current', username);
+  showApp();
+}
+
+function logout() {
+  localStorage.removeItem('neuro_current');
+  currentUser = null;
+  document.getElementById('app').classList.add('hidden');
+  document.getElementById('login-screen').classList.remove('hidden');
+  document.getElementById('username').value = '';
+  document.getElementById('password').value = '';
+}
+
+function showApp() {
+  document.getElementById('login-screen').classList.add('hidden');
+  document.getElementById('app').classList.remove('hidden');
+  document.getElementById('user-name').textContent = currentUser;
+  document.getElementById('user-avatar').textContent = currentUser[0].toUpperCase();
+  loadChats();
+  newChat();
+}
+
+function loadChats() {
+  chats = JSON.parse(localStorage.getItem('neuro_chats_' + currentUser) || '[]');
+  renderChatList();
+}
+
+function saveChats() {
+  localStorage.setItem('neuro_chats_' + currentUser, JSON.stringify(chats));
+}
+
+function renderChatList() {
+  const list = document.getElementById('chat-list');
+  list.innerHTML = '';
+  chats.slice().reverse().forEach(c => {
+    const div = document.createElement('div');
+    div.className = 'chat-item' + (c.id === currentChatId ? ' active' : '');
+    div.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> ${c.title || 'Новый чат'}`;
+    div.onclick = () => openChat(c.id);
+    list.appendChild(div);
+  });
+}
+
+function newChat() {
+  currentChatId = 'chat_' + Date.now();
+  chats.push({ id: currentChatId, title: 'Новый чат', messages: [] });
+  saveChats();
+  renderChatList();
+  document.getElementById('messages').innerHTML = '';
+  document.getElementById('welcome').style.display = 'block';
+}
+
+function openChat(id) {
+  currentChatId = id;
+  const chat = chats.find(c => c.id === id);
+  renderChatList();
+  const msgs = document.getElementById('messages');
+  msgs.innerHTML = '';
+  document.getElementById('welcome').style.display = chat.messages.length ? 'none' : 'block';
+  chat.messages.forEach(m => appendMessage(m.role, m.content, false));
+}
+
+function appendMessage(role, content, save = true) {
+  document.getElementById('welcome').style.display = 'none';
+  const msgs = document.getElementById('messages');
+  const div = document.createElement('div');
+  div.className = 'message ' + role;
+  const avatar = role === 'user' ? currentUser[0].toUpperCase() : 'N';
+  div.innerHTML = `
+    <div class="avatar">${avatar}</div>
+    <div class="content">${formatContent(content)}</div>
+  `;
+  msgs.appendChild(div);
+  document.getElementById('chat-area').scrollTop = document.getElementById('chat-area').scrollHeight;
+  if (save) {
+    const chat = chats.find(c => c.id === currentChatId);
+    if (chat) {
+      chat.messages.push({ role, content });
+      if (chat.messages.length === 1 && role === 'user') {
+        chat.title = content.slice(0, 40) + (content.length > 40 ? '...' : '');
+        renderChatList();
+      }
+      saveChats();
+    }
+  }
+}
+
+function formatContent(text) {
+  let html = text
+    .replace(/&/g, '&').replace(/</g, '<').replace(/>/g, '>')
+    .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\n/g, '<br>');
+  return html;
+}
+
+function sendSuggestion(text) {
+  document.getElementById('user-input').value = text;
+  sendMessage();
+}
+
+function handleKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendMessage();
+  }
+}
+
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 200) + 'px';
+}
+
+async function sendMessage() {
+  const input = document.getElementById('user-input');
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  input.style.height = 'auto';
+  document.getElementById('send-btn').disabled = true;
+  appendMessage('user', text);
+  const thinking = document.createElement('div');
+  thinking.className = 'message ai';
+  thinking.id = 'thinking';
+  thinking.innerHTML = `<div class="avatar">N</div><div class="content">Думаю...</div>`;
+  document.getElementById('messages').appendChild(thinking);
+  document.getElementById('chat-area').scrollTop = document.getElementById('chat-area').scrollHeight;
+  await delay(800 + Math.random() * 1200);
+  const response = generateResponse(text);
+  document.getElementById('thinking')?.remove();
+  appendMessage('ai', response);
+  document.getElementById('send-btn').disabled = false;
+  document.getElementById('user-input').focus();
+}
+
+function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+function generateResponse(userText) {
+  const lower = userText.toLowerCase();
+  if (lower.includes('фото') || lower.includes('картинк') || lower.includes('изображен')) {
+    return `Я могу создать фото по вашему описанию!\n\nНажмите кнопку **🖼 Создать фото** вверху, чтобы сгенерировать изображение.\n\nИли опишите подробнее, что хотите увидеть.`;
+  }
+  if (lower.includes('видео')) {
+    return `Я умею создавать видео длительностью до **25 минут**!\n\nНажмите **🎬 Создать видео** в панели инструментов. Вы сами указываете длительность и описание.`;
+  }
+  if (lower.includes('музык') || lower.includes('песн') || lower.includes('трек')) {
+    return `Создаю музыку по любому описанию!\n\nНажмите **🎵 Создать музыку** — укажите жанр, настроение, инструменты и получите трек.`;
+  }
+  if (lower.includes('3d') || lower.includes('модель') || lower.includes('принтер')) {
+    return `Генерирую 3D-модели для печати на 3D-принтере!\n\nНажмите **🖨 3D-модель**, опишите объект — получите STL-файл.`;
+  }
+  if (lower.includes('код') || (lower.includes('напиши') && (lower.includes('react') || lower.includes('python') || lower.includes('js') || lower.includes('html')))) {
+    return `Конечно! Вот пример:\n\n\`\`\`javascript\n// Пример простого компонента\nfunction App() {\n  const [count, setCount] = useState(0);\n  return (\n    <div>\n      <h1>Счётчик: {count}</h1>\n      <button onClick={() => setCount(count + 1)}>+</button>\n    </div>\n  );\n}\n\`\`\`\n\nМогу доработать под ваши требования. Что именно нужно?`;
+  }
+  const responses = [
+    `Отличный вопрос! Давайте разберём подробно.\n\n${userText.slice(0, 50)}... — это интересная тема. Вот ключевые моменты:\n\n1. **Основная идея** — важно понимать контекст\n2. **Практическое применение** — можно использовать сразу\n3. **Дальнейшие шаги** — рекомендую начать с простого\n\nЕсли нужно углубиться в конкретный аспект — спрашивайте!`,
+    `Я проанализировал ваш запрос.\n\nВот что могу предложить:\n\n• Чёткий и структурированный ответ\n• Примеры и аналогии\n• Практические рекомендации\n\nХотите, чтобы я раскрыл какой-то пункт подробнее или добавил код/схему?`,
+    `Понял задачу. Вот решение:\n\n**Краткий ответ:** всё выполнимо.\n\n**Подробно:**\nНейро-чат создан, чтобы решать такие задачи максимально качественно. Я могу помочь с кодом, текстами, идеями, генерацией контента и многим другим.\n\nПродолжайте — я готов!`
+  ];
+  return responses[Math.floor(Math.random() * responses.length)];
+}
+
+function openTool(type) {
+  currentTool = type;
+  const titles = {
+    photo: '🖼 Создание фото',
+    video: '🎬 Создание видео (до 25 мин)',
+    music: '🎵 Создание музыки',
+    '3d': '🖨 3D-модель для печати'
+  };
+  document.getElementById('modal-title').textContent = titles[type];
+  let body = '';
+  if (type === 'photo') {
+    body = `
+      <label>Описание изображения</label>
+      <textarea id="tool-prompt" placeholder="Например: футуристический город ночью, неоновые огни, киберпанк стиль"></textarea>
+      <label>Стиль</label>
+      <select id="tool-style">
+        <option>Реализм</option>
+        <option>Аниме</option>
+        <option>Цифровое искусство</option>
+        <option>Масляная живопись</option>
+        <option>3D-рендер</option>
+        <option>Киберпанк</option>
+      </select>
+    `;
+  } else if (type === 'video') {
+    body = `
+      <label>Описание видео</label>
+      <textarea id="tool-prompt" placeholder="Например: полёт дрона над горами на закате, эпичная музыка"></textarea>
+      <label>Длительность (секунды, макс 1500 = 25 мин)</label>
+      <input type="number" id="tool-duration" value="30" min="5" max="1500">
+      <label>Разрешение</label>
+      <select id="tool-res">
+        <option>1080p</option>
+        <option>720p</option>
+        <option>4K</option>
+      </select>
+    `;
+  } else if (type === 'music') {
+    body = `
+      <label>Описание трека</label>
+      <textarea id="tool-prompt" placeholder="Например: энергичный электронный трек, 128 bpm, синтезаторы, драйв"></textarea>
+      <label>Жанр</label>
+      <select id="tool-genre">
+        <option>Электронная</option>
+        <option>Поп</option>
+        <option>Рок</option>
+        <option>Хип-хоп</option>
+        <option>Классика</option>
+        <option>Ло-фай</option>
+        <option>Эмбиент</option>
+      </select>
+      <label>Длительность (секунды)</label>
+      <input type="number" id="tool-duration" value="60" min="15" max="600">
+    `;
+  } else if (type === '3d') {
+    body = `
+      <label>Описание модели</label>
+      <textarea id="tool-prompt" placeholder="Например: ваза с геометрическим узором, высота 15 см, для 3D-печати"></textarea>
+      <label>Формат</label>
+      <select id="tool-format">
+        <option>STL</option>
+        <option>OBJ</option>
+        <option>GLB</option>
+      </select>
+      <label>Размер (мм)</label>
+      <input type="number" id="tool-size" value="100" min="10" max="500">
+    `;
+  }
+  document.getElementById('modal-body').innerHTML = body;
+  document.getElementById('modal-overlay').classList.remove('hidden');
+}
+
+function closeModal(e) {
+  if (e && e.target !== document.getElementById('modal-overlay') && e.type === 'click') return;
+  document.getElementById('modal-overlay').classList.add('hidden');
+  currentTool = null;
+}
+
+async function submitTool() {
+  const prompt = document.getElementById('tool-prompt')?.value?.trim();
+  if (!prompt) {
+    alert('Введите описание');
+    return;
+  }
+  closeModal();
+  appendMessage('user', `[Инструмент: ${currentTool}] ${prompt}`);
+  const thinking = document.createElement('div');
+  thinking.className = 'message ai';
+  thinking.id = 'thinking';
+  thinking.innerHTML = `<div class="avatar">N</div><div class="content">Генерирую... Это может занять несколько секунд</div>`;
+  document.getElementById('messages').appendChild(thinking);
+  await delay(1500 + Math.random() * 2000);
+  document.getElementById('thinking')?.remove();
+  let result = '';
+  if (currentTool === 'photo') {
+    const style = document.getElementById('tool-style')?.value || 'Реализм';
+    result = `✅ **Фото создано!**\n\nОписание: ${prompt}\nСтиль: ${style}\n\n<div class="result-card"><h4>Сгенерированное изображение</h4><img src="https://picsum.photos/seed/${Date.now()}/768/512" alt="generated"><br><a class="download" href="https://picsum.photos/seed/${Date.now()}/1920/1080" target="_blank">Скачать в высоком разрешении</a></div>\n\nМогу создать ещё варианты или изменить параметры.`;
+  } else if (currentTool === 'video') {
+    const dur = document.getElementById('tool-duration')?.value || 30;
+    const res = document.getElementById('tool-res')?.value || '1080p';
+    result = `✅ **Видео создано!**\n\nОписание: ${prompt}\nДлительность: ${dur} сек (${(dur/60).toFixed(1)} мин)\nРазрешение: ${res}\n\n<div class="result-card"><h4>Ваше видео готово</h4><p>Видео успешно сгенерировано. В полной версии здесь будет плеер и ссылка на скачивание MP4.</p><a class="download" href="#">Скачать видео (MP4)</a></div>\n\nМаксимальная длительность — 25 минут. Могу сделать другое видео.`;
+  } else if (currentTool === 'music') {
+    const genre = document.getElementById('tool-genre')?.value || 'Электронная';
+    const dur = document.getElementById('tool-duration')?.value || 60;
+    result = `✅ **Музыка создана!**\n\nОписание: ${prompt}\nЖанр: ${genre}\nДлительность: ${dur} сек\n\n<div class="result-card"><h4>Ваш трек</h4><p>Трек сгенерирован. В полной версии здесь будет аудиоплеер.</p><a class="download" href="#">Скачать MP3</a></div>\n\nХотите другой жанр или настроение?`;
+  } else if (currentTool === '3d') {
+    const format = document.getElementById('tool-format')?.value || 'STL';
+    const size = document.getElementById('tool-size')?.value || 100;
+    result = `✅ **3D-модель готова!**\n\nОписание: ${prompt}\nФормат: ${format}\nРазмер: ${size} мм\n\n<div class="result-card"><h4>Модель для 3D-печати</h4><p>Файл готов к загрузке в слайсер (Cura, PrusaSlicer и др.).</p><a class="download" href="#">Скачать ${format}</a></div>\n\nМогу изменить размеры или детали модели.`;
+  }
+  appendMessage('ai', result);
+  currentTool = null;
+}
+
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+
+(function init() {
+  const saved = localStorage.getItem('neuro_current');
+  if (saved) {
+    currentUser = saved;
+    showApp();
+  }
+})();
+</script>
+</body>
+</html>
