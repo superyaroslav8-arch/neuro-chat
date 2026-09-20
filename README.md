@@ -3,18 +3,19 @@
 AI-помощник в стиле **Grok**.
 
 ## Возможности
-- Чат с моделями: Нейро-чат (основная), Grok, ChatGPT, АлисаИ, ДедИИ, Claude, Gemini и др.
-- **Реальная генерация фото** (Pollinations Flux)
-- Генерация видео, музыки, 3D-моделей
-- Создание и скачивание сайтов
-- Коннекторы (GitHub, Gmail, Drive, Slack, Notion, Spotify, X, Vercel)
-- Регистрация по логину/паролю
-- Тёмная тема по умолчанию (стиль Grok), светлая, выбор акцентного цвета (основной — голубой)
-- Смена языка, звуки, история чатов
+- Голосовое общение (кнопка «Говорить»)
+- Реальная генерация фото (Pollinations Flux)
+- Видео, музыка, 3D, создание сайтов
+- 40+ коннекторов (Apple, Android, Samsung, Tesla, умный дом и др.)
+- Модели: Нейро-чат, Grok, ChatGPT, АлисаИ, ДедИИ и др.
 - Полностью бесплатно
 
-## Ссылка
-https://neuro-chat-eight.vercel.app
+## Ссылки
+- Сайт: https://neuro-chat-eight.vercel.app
+- GitHub Pages: https://superyaroslav8-arch.github.io/neuro-chat/
 
 ## Поддержка
-+7 (900) 237-32-22 · superyaroslav8@iCloud.com
+- Телефон: 8 (900) 237-32-22
+- Email: superyaroslav8@iCloud.com
+- Telegram: +7 938 875-04-05
+- Создатель: **Супруненко Ярослав Ильич**
